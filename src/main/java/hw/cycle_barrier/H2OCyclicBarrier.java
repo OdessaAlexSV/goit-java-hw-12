@@ -15,7 +15,7 @@ class H2OCyclicBarrier {
         hydrogenSemaphore = new Semaphore(2);
     }
 
-    public void hydrogen(Runnable runHydrogen) throws InterruptedException {
+    public void releaseHydrogen(Runnable runHydrogen) throws InterruptedException {
         hydrogenSemaphore.acquire();
         try {
             cb.await();
@@ -27,7 +27,7 @@ class H2OCyclicBarrier {
 
     }
 
-    public void oxygen(Runnable runOxygen) throws InterruptedException {
+    public void releaseOxygen(Runnable runOxygen) throws InterruptedException {
         oxygenSemaphore.acquire();
         try {
             cb.await();
